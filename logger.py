@@ -1,27 +1,32 @@
 import serial
+import numpy
 
-'''
-WEIGHTFILE = "C:\DEV\weight\dados.txt"
+#WEIGHTFILE = "C:\DEV\weight\dados.txt"
 
-serialPort = serial.Serial('com3', 9600)
-serialPort.flushInput()
+def read_serial_data(port='COM3', baundrate=9600):
+    data = ''
 
-data = ''
+    serialPort = serial.Serial(port, baundrate)
+    serialPort.flushInput()
 
-byte = serialPort.read(11)
-if byte:
-    data += byte.decode('utf-8',errors='ignore')         
+    byte = serialPort.read(11)
+    if byte:
+        data += byte.decode('utf-8',errors='ignore')
 
-serialPort.flushInput()          
-serialPort.close()
-print(data)
-'''
-data = "0006460007/06/202415:4932    0006460007/06/202415:4932    0006460007/06/202415:4932    0006460007/06/202415:4932"
+             
+
+    serialPort.flushInput()          
+    serialPort.close()
+
+    return data
+
+
+#data = read_serial_data()
+data = "   f  0050340"
 
 data_array = data.split()
 
 data_array = [char for item in data_array for char in item]
-#print(data_array)
 
 type_data_array = []
 
@@ -29,23 +34,28 @@ for item in data_array:
     try:
         type_data_array.append(int(item))
     except ValueError:
-        type_data_array.append(item)
+        #read_serial_data()
+        print('Ler novamente')
+        break
 
-type_data_array = [type(item) for item in type_data_array]
+data_int = int("".join(map(str,type_data_array)))
 
-#print(type_data_array)
-limit = 0
-while limit <= 7:
+print(data_int)
+
+'''
+loop = 0
+teste = [].
+while loop <= 7:
     for item in type_data_array:
-        if item == int:
-            print(item)
-            limit += 1
-            print(limit)
+        if isinstance(item,int):
+            teste.append(item)
+            loop =+ 1
         else:
-            print("fim")
+            
+            break
 
-
-
+print(teste)
+'''
 '''
 with open(WEIGHTFILE, 'w') as file:
     file.write(data)
