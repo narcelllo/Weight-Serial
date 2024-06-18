@@ -1,11 +1,15 @@
 import serial
-import csv
 
-#WEIGHTFILE = "C:\DEV\weight\dados.txt"
+WEIGHTFILE = '.\dados.txt'
 
-def read_serial_data(port='COM3', baundrate=9600):
+def read_serial_data():
     data = ''
-    normalize_data = []
+
+    with open('.\config_port.txt', 'r') as file:
+        port = file.read()
+
+    with open('.\config_baundrate.txt', 'r') as file:
+        baundrate = int(file.read())
 
     serialPort = serial.Serial(port, baundrate)
     serialPort.flushInput()
@@ -14,22 +18,22 @@ def read_serial_data(port='COM3', baundrate=9600):
     if byte:
         data += byte.decode('utf-8',errors='ignore')
 
+    serialPort.flushInput()          
+    serialPort.close()
+    return data
+
+def normalize_data(data):
+    normalize_data = []
     for item in data:
         try:
             normalize_data.append(int(item))
 
         except ValueError:
-            print('Ler novamente')             
+            read_serial_data()
 
-    serialPort.flushInput()          
-    serialPort.close()
-    normalize_data = int("".join(map(str, normalize_data)))
+    normalize_data = str("".join(map(str, normalize_data)))
     return normalize_data
 
-read_serial_data()
-print(read_serial_data(),"\n")
-
-'''
+normalize_data_ = normalize_data(read_serial_data())
 with open(WEIGHTFILE, 'w') as file:
-    file.write(data)
-'''
+    file.write(normalize_data_)

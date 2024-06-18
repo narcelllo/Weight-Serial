@@ -1,5 +1,5 @@
 import re
-from tkinter import Tk, ttk, Label, Button
+from tkinter import Tk, ttk, Label, Button, filedialog
 import serial, serial.tools.list_ports as SerialPortsLister
 
 def listSerialPorts():
@@ -7,7 +7,7 @@ def listSerialPorts():
     return [port.device for port in ports]
 
 def saveConfiguration():
-    CONFIGURATIONCOM = ".\config_com.txt"
+    CONFIGURATIONCOM = ".\config_port.txt"
     CONFIGURATIONCOMBAUNDRATE = ".\config_baundrate.txt"
     
     com = ttkSerialComboBox.get()
@@ -50,7 +50,7 @@ ttkLabelSerialComboBox.grid(column = 1, row = 3)
 ttkLabelSerialBaundComboBox.grid(column = 1, row = 4)
 ttkLabelCentralize.grid(column = 0, row = 0)
 
-# Mocked values for testing
+# Values for testing
 #serialPorts = ["COM1", "COM2", "COM3", "COM4", "COM5", "COM6"]
 
 ttkSerialComboBox = ttk.Combobox(canvas, values = serialPorts)
