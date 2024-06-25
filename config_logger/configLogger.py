@@ -1,28 +1,24 @@
-import re
 from tkinter import Tk, ttk, Label, Button, filedialog
 import serial, serial.tools.list_ports as SerialPortsLister
 
-CONFIGURATIONCOM = ".\config_port.txt"
-CONFIGURATIONCOMBAUNDRATE = ".\config_baundrate.txt"
-CONFIGURATIONDIRECTORY = ".\config_directory.txt"
+CONFIGURATIONCOM = r'./config_logger/config_port.txt'
+CONFIGURATIONCOMBAUNDRATE = r'./config_logger/config_baundrate.txt'
+CONFIGURATIONDIRECTORY = r'./config_logger/config_directory.txt'
 
 def listSerialPorts():
     ports = SerialPortsLister.comports()
     return [port.device for port in ports]
 
 def selectDirectory():
-    # Abre a janela de diálogo para selecionar um diretório
     selectDirectory = filedialog.askdirectory()
-    # Verifica se um diretório foi selecionado
+
     if selectDirectory:
-        # Exibe o diretório selecionado em uma etiqueta
-        ttkLabelDiretorio.config(text=f"Diretório selecionado: {selectDirectory}", wraplength=canvasLimit -20, justify="left")
+        ttkLabelDiretorio.config(text=f"Diretório selecionado: {selectDirectory}", wraplength=canvasLimit -120, justify="left")
 
         with open(CONFIGURATIONDIRECTORY,  "w") as file: 
             file.write(selectDirectory)
 
     else:
-        # Se nenhum diretório foi selecionado, mostra uma mensagem padrão
         ttkLabelDiretorio.config(text="Nenhum diretório selecionado.")
 
 def saveConfiguration():
@@ -57,7 +53,7 @@ serialRate = ["300", "1200", "2400", "4800", "9600"]
 
 canvas = Tk()
 canvas.title("Serial configuration")
-canvas.geometry("350x200")
+canvas.geometry("350x250")
 canvasLimit = 300
 
 ttkLabelSerialComboBox = Label(canvas, text = "COM")
