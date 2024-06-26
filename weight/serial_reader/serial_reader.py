@@ -1,23 +1,28 @@
-import serial
 import os
+import sys
+import serial
 
-FILE = r'dados.txt'
-CONFIGPORT = r'./config_logger/config_port.txt'
-CONFIGDIRECTORY = r'./config_logger/config_directory.txt'
-CONFIGBAUNDRATE = r'./config_logger/config_baundrate.txt'
+FILE = r'/dados.txt'
 
-with open(CONFIGDIRECTORY, 'r') as file:
+current_directory = os.path.dirname(os.path.abspath(sys.executable if hasattr(sys, 'frozen') else __file__))
+
+parent_directory = os.path.abspath(os.path.join(current_directory, os.pardir))
+config_port = os.path.join(parent_directory, "config_port.txt")
+config_baudrate = os.path.join(parent_directory, "config_baudrate.txt")
+config_directory = os.path.join(parent_directory, "config_directory.txt")
+
+with open(config_directory, 'r') as file:
     weightfile= file.read()
 
-complete_file = os.path.join(weightfile, FILE)
+weightfile += FILE
 
 def read_serial_data():
     data = ''
     
-    with open(CONFIGPORT, 'r') as file:
+    with open(config_port, 'r') as file:
         port = file.read()
 
-    with open(CONFIGBAUNDRATE, 'r') as file:
+    with open(config_baudrate, 'r') as file:
         baundrate = int(file.read())
 
     serialPort = serial.Serial(port, baundrate)
@@ -58,7 +63,7 @@ data = read_serial_data()
 
 normalized_data = str(normalize_data(data))
 
-with open(complete_file,  "w") as file: 
+with open(weightfile,  "w") as file: 
         file.write(normalized_data)
 
 # normalize_data = str("".join(map(str, normalize_data))) transforma arrai em inteiro e converte em STR
