@@ -42,54 +42,57 @@ def saveConfiguration():
     canvasCallBack.geometry("250x150")
 
     ttkLabelSerialComboBox = Label(canvasCallBack, text=f"{com} Successful configuration.")
-    ttkOkButton = Button(canvasCallBack, text="    Ok    ", command=canvasCallBack.destroy)
-    ttkLabelCentralize = Label(canvasCallBack, text="              ")
-    
     ttkLabelSerialComboBox.grid(column=1, row=1)
-    ttkLabelCentralize.grid(column=0, row=0)
+
+    ttkOkButton = Button(canvasCallBack, text="    Ok    ", command=canvasCallBack.destroy)
     ttkOkButton.grid(column=1, row=2)
+
+    ttkLabelCentralize = Label(canvasCallBack, text="              ")
+    ttkLabelCentralize.grid(column=0, row=0)
 
     canvasCallBack.mainloop()
 
 serialPorts = listSerialPorts()
-serialRate = ["300", "1200", "2400", "4800", "9600"]
-
-canvas = Tk()
-canvas.title("Serial configuration")
-canvas.geometry("350x250")
-canvasLimit = 300
-
-ttkLabelSerialComboBox = Label(canvas, text="COM")
-ttkLabelSerialBaundComboBox = Label(canvas, text="Velocidade")
-ttkLabelDiretorio = Label(canvas, text="Nenhum diretório selecionado.")
-ttkButtonDiretorio = Button(canvas, text="Escolha o Diretório", command=selectDirectory)
-
-ttkLabelCentralize = Label(canvas, text="              ")
-
-ttkLabelSerialComboBox.grid(column=1, row=3)
-ttkLabelSerialBaundComboBox.grid(column=1, row=4)
-ttkLabelDiretorio.grid(column=2, row=5)
-ttkButtonDiretorio.grid(column=2, row=6)
-ttkLabelCentralize.grid(column=0, row=0)
 
 # Valores de teste para as portas seriais
 #serialPorts = ["COM1", "COM2", "COM3", "COM4", "COM5", "COM6"]
 
+canvas = Tk()
+canvas.title("Serial configuration")
+canvas.geometry("300x200")
+canvasLimit = 300
+
+ttkLabelCentralize = Label(canvas, text="              ")
+ttkLabelCentralize.grid(column=0, row=0)
+
+ttkLabelSerialComboBox = Label(canvas, text="COM")
+ttkLabelSerialComboBox.grid(column=1, row=3)
+
 ttkSerialComboBox = ttk.Combobox(canvas, values=serialPorts)
 ttkSerialComboBox.set("COM Desconectada")
-
-ttkSerialBaundComboBox = ttk.Combobox(canvas, values=serialRate)
-ttkSerialBaundComboBox.set("COM Desconectada")
+ttkSerialComboBox.grid(column=2, row=3)
 
 ttkCancelButton = Button(canvas, text=" Cancel ", command=canvas.destroy)
-
-ttkSerialComboBox.grid(column=2, row=3)
-ttkSerialBaundComboBox.grid(column=2, row=4)
 ttkCancelButton.grid(column=2, row=7, padx=5, pady=5)
 
-if serialPorts and serialRate:
+if serialPorts:
+    canvas.geometry("380x250")
+    serialRate = ["300", "1200", "2400", "4800", "9600"]
     ttkSerialComboBox.set("--")
+
+    ttkSerialBaundComboBox = ttk.Combobox(canvas, values=serialRate)
     ttkSerialBaundComboBox.set("--")
+    ttkSerialBaundComboBox.grid(column=2, row=4)
+
+    ttkLabelSerialBaundComboBox = Label(canvas, text="Velocidade")
+    ttkLabelSerialBaundComboBox.grid(column=1, row=4)
+
+    ttkLabelDiretorio = Label(canvas, text="Nenhum diretório selecionado.")
+    ttkLabelDiretorio.grid(column=2, row=5)
+
+    ttkButtonDiretorio = Button(canvas, text="Escolha o Diretório", command=selectDirectory)
+    ttkButtonDiretorio.grid(column=2, row=6)
+
     ttkSaveButton = Button(canvas, text="   Save   ", command=saveConfiguration)
     ttkSaveButton.grid(column=2, row=8, padx=5, pady=5)
 
