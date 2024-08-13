@@ -59,4 +59,11 @@ Será criado uma pasta `build`, contendo o executável do aplicativo selecionado
 
 4. Siga os mesmos passos para os demais, sempre comentando as linhas já executadas.
 
+## Requisitos
+- Python 3.12.3
+- Serial 0.0.97
+
+## OBS
+Desenvolvido para solucionar uma demanda técnica crítica que impactava todo o processo de carga e descarga da empresa, gerando custos com a estadia de motoristas, ocupação do pátio e perda de qualidade dos produtos.
+
 
