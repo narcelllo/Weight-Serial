@@ -9,7 +9,7 @@ Ao executar o aplicativo `config_logger.exe` serão apresentadas as seguintes te
 ![Alt text](image-1.png)
 
 2. Caso existam portas conectadas o combo box `COM` exibirá todas disponíveis:
-![Alt text](image-02.png)
+![Alt text](image-7.png)
 
 3. O campo `Velocidade` exibe as opções de velocidade de transmissão, que devem ser definidas conforme a capacidade de transmissão do seu equipamento.
 ![Alt text](image-3.png)
@@ -58,4 +58,5 @@ Será criado uma pasta `build`, contendo o executável do aplicativo selecionado
 3. Copie a pasta `build` para um diretório de sua preferência e renomeie-a com o nome correspondente ao da linha descomentada. Exemplo: `config_logger`.
 
 4. Siga os mesmos passos para os demais, sempre comentando as linhas já executadas.
+
 
