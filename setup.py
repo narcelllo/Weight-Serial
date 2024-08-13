@@ -11,11 +11,13 @@ if sys.platform == "win32":
     base = "Win32GUI"
 
 setup(
+    #name="config_logger",
+    #name="serial_reader",
     name="logger",
     version="0.1",
     description="",
     options={"build_exe": build_exe_options},
     #executables=[Executable("weight\config_logger\config_logger.py", base=base)]
     #executables=[Executable("weight\serial_reader\serial_reader.py", base=base)]
-    #executables=[Executable("weight\logger\logger.py", base=base)]
+    executables=[Executable("weight\logger\logger.py", base=base)]
 )

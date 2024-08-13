@@ -25,6 +25,8 @@ def selectDirectory():
     else:
         ttkLabelDiretorio.config(text="Nenhum diretório selecionado.")
 
+
+
 def saveConfiguration():
     com = ttkSerialComboBox.get()
     rate = ttkSerialBaundComboBox.get()
@@ -53,6 +55,8 @@ def saveConfiguration():
     canvasCallBack.mainloop()
 
 serialPorts = listSerialPorts()
+
+
 
 # Valores de teste para as portas seriais
 #serialPorts = ["COM1", "COM2", "COM3", "COM4", "COM5", "COM6"]
