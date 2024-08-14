@@ -5,16 +5,16 @@ Este repositório contém uma aplicação para leitura de dados enviados via por
 
 Ao executar o aplicativo `config_logger.exe` serão apresentadas as seguintes telas:
 
-1. Caso não encontre nenhuma conexão Serial em seu dispositivo:
+1. Caso não encontre nenhuma conexão Serial em seu dispositivo:   
 ![Alt text](image-1.png)
 
-2. Caso existam portas conectadas o combo box `COM` exibirá todas disponíveis:
+2. Caso existam portas conectadas o combo box `COM` exibirá todas disponíveis:   
 ![Alt text](image-7.png)
 
-3. O campo `Velocidade` exibe as opções de velocidade de transmissão, que devem ser definidas conforme a capacidade de transmissão do seu equipamento.
+3. O campo `Velocidade` exibe as opções de velocidade de transmissão, que devem ser definidas conforme a capacidade de transmissão do seu equipamento.  
 ![Alt text](image-3.png)
 
-4. O campo `Escolha o Diretório` permite selecionar o diretório onde deve ser salvo o arquivo `dados.txt`, que contém o valor do peso registrado no marcador.
+4. O campo `Escolha o Diretório` permite selecionar o diretório onde deve ser salvo o arquivo `dados.txt`, que contém o valor do peso registrado no marcador.     
 ![Alt text](image-4.png)
 
 5. Após a seleção de todos os campos, ao clicar em `Save`, a seguinte tela aparece, confirmando a configuração:   
@@ -59,6 +59,4 @@ Será criado uma pasta `build`, contendo o executável do aplicativo selecionado
 
 4. Siga os mesmos passos para os demais, sempre comentando as linhas já executadas.
 
-## Requisitos
-- Python 3.12.3
-- Serial 0.0.97
+
