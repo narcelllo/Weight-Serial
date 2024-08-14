@@ -1,4 +1,4 @@
-# Primeiro contato com Python (Projeto em procução)
+# Primeiro contato com Python.
 Este repositório contém uma aplicação para leitura de dados enviados via porta serial por balanças rodoviárias que utilizam o protocolo de comunicação EPM.
 
 ## Execução Config_logger
@@ -62,6 +62,3 @@ Será criado uma pasta `build`, contendo o executável do aplicativo selecionado
 ## Requisitos
 - Python 3.12.3
 - Serial 0.0.97
-
-## OBS
-Desenvolvido para solucionar uma demanda técnica crítica que impactava todo o processo de carga e descarga da empresa, gerando custos com a estadia de motoristas, ocupação do pátio e perda de qualidade dos produtos.
